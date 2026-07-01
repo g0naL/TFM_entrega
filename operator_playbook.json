@@ -1,0 +1,18 @@
+{
+  "commands": [],
+  "candidates": [
+    {
+      "id": "vsftpd-234-backdoor-check",
+      "enabled": true,
+      "phase": "vulnerability_scanning",
+      "objective": "Verificar de forma controlada la backdoor de vsFTPd 2.3.4 en FTP/21.",
+      "command": "vsftpd_backdoor_check {target_host} --ftp-port 21 --backdoor-port 6200 --timeout 5",
+      "requires_port": 21,
+      "requires_service": "ftp",
+      "rationale": "Reproduce el flujo de prueba manual del laboratorio: banner FTP, USER con ':)', PASS y comprobacion del puerto 6200.",
+      "risk": "high",
+      "requires_human_approval": true,
+      "expected_signal": "El puerto 6200 aparece abierto tras el trigger FTP o queda como no confirmado."
+    }
+  ]
+}

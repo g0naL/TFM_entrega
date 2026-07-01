@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tfm-pentest-orchestrator"
+version = "0.1.0"
+description = "Academic multi-agent pentest orchestration for authorized artificial labs."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain-ollama>=0.1.0",
+    "langgraph>=0.2.0",
+    "langsmith>=0.1.95",
+    "openai>=1.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[project.scripts]
+pentest-orchestrator = "pentest_orchestrator.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["code/src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["code/src"]
+testpaths = ["tests"]
